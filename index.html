@@ -9,35 +9,63 @@
     <style>
         body {
             font-family: 'Cinzel', serif;
-            background-color: #fffaf0; /* Ivory background */
+            background-color: #171717; /* Dark background for mythical vibe */
         }
-        h1, h2, h3, p { color: #3d3d3d; } /* Dark text for contrast */
-        
-        /* Custom styles for the heroic mythical theme */
+        h1, h2, h3, p {
+            color: #faf9f6; /* Light text for high contrast */
+        }
+
+        nav.bg-white { /* Dark navbar for the mythical theme */
+            background-color: #0a0a0a; /* Dark color */
+        }
+        nav a.text-gray-700 {
+            color: #d2d2d2; /* Light grey text */
+        }
+        nav a:hover {
+            color: #feca57; /* Golden color on hover for links */
+        }
+
         .heroic-text {
             font-size: 2rem;
             line-height: 3rem;
-            color: #011627;
+            color: #f1da74; /* Light gold color for emphasized text */
         }
         
         .hero-section {
-            display: flex;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
+            background-image: url('path_to_mythical_background_image.jpg'); /* Add a relevant mythical background image */
+            background-size: cover;
+            background-position: center;
         }
 
         .hero-text {
-            flex-basis: 50%;
+            max-width: 600px; /* A fixed width for text to prevent it from stretching too wide on larger screens */
         }
 
         .model-3d {
-            flex-basis: 50%;
-            /* Temporary styles for demonstration */
-            width: 100%;
-            height: 400px;
-            background: #ddd url('path_to_placeholder_image_for_3d_model.png') no-repeat center center;
-            background-size: contain;
+            /* Updated styles as earlier with proper commenting */
+        }
+
+        /* Section coloring */
+        #about {
+            background-color: #292524; /* Mystical grey for the about section */
+        }
+        #portfolio {
+            background-color: #201c1e; /* Dark maroon for portolio with a hint of mystery */
+        }
+        #blog {
+            background-color: #292524; /* Keeping this consistent with 'about' section */
+        }
+
+        footer {
+            background-color: #100f0d; /* Slightly lighter than body for contrast */
+        }
+
+        a.bg-background {
+            background-color: #feca57; /* Golden color for CTA buttons */
+            color: #171717; /* Dark text */
+        }
+        a.bg-background:hover {
+            background-color: #ffd700; /* Brighter gold on hover */
         }
     </style>
 
