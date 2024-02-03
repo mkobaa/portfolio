@@ -1,9 +1,10 @@
+Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyllus – Mythical Web Developer Portfolio</title>
+    <title>Hyllus – Mythological Web Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
     <style>
@@ -12,57 +13,65 @@
             background-color: #fffaf0; /* Ivory background */
         }
         h1, h2, h3, p { color: #3d3d3d; } /* Dark text for contrast */
+        
+        /* Custom styles for the heroic mythical theme */
+        .heroic-text {
+            font-size: 2rem;
+            line-height: 3rem;
+            color: #011627;
+        }
+        
+        .hero-section {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
 
-        /* Add more custom styles here as needed */
+        .hero-text {
+            flex-basis: 50%;
+        }
+
+        .model-3d {
+            flex-basis: 50%;
+            /* Temporary styles for demonstration */
+            width: 100%;
+            height: 400px;
+            background: #ddd url('path_to_placeholder_image_for_3d_model.png') no-repeat center center;
+            background-size: contain;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="bg-white text-gray-900">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-4">
-                    <div>
-                        <a href="#" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
-                            <span class="font-bold">Hyllus</span>
-                        </a>
-                    </div>
-
-                    <!-- Primary Nav Menu -->
-                    <div class="hidden md:flex items-center space-x-1">
-                        <a href="#home" class="py-5 px-3 hover:text-gray-900">Home</a>
-                        <a href="#about" class="py-5 px-3 hover:text-gray-900">About</a>
-                        <a href="#contact" class="py-5 px-3 hover:text-gray-900">Contact</a>
-                    </div>
-                </div>
-
-                <!-- Mobile Button goes here -->
-
-            </div>
-        </div>
-    </nav>
-
     <!-- Hero Section -->
-    <div class="relative min-h-screen flex items-center" id="home">
-        <div class="container mx-auto flex flex-wrap items-center px-4 md:px-20">
-            <!-- Text container -->
-            <div class="w-full md:w-1/2 text-left">
-                <h1 class="text-5xl font-bold leading-tight">Embark on a Digital Odyssey</h1>
-                <p class="text-2xl my-4">
-                    Journey through the artistry of modern web craft, where each line of code is woven into the very fabric of the internet — crafting worlds, telling stories, building legacies.
-                </p>
-            </div>
-            <!-- 3D Model container -->
-            <div class="w-full md:w-1/2">
-                <!-- Placeholder for 3D model -->
-                <div class="w-full h-64 bg-gray-300 rounded-lg shadow-xl mx-auto">
-                    <!-- Implement 3D model with Three.js or other library -->
-                </div>
-            </div>
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1 class="text-5xl font-bold leading-tight">Embark on a Digital Odyssey</h1>
+            <p class="heroic-text my-2">
+                Journey through the artistry of modern web craft, where each line of code is woven into the very fabric of the internet — crafting worlds, telling stories, building legacies.
+            </p>
+            <!-- This button is optional -->
+            <a href="#about" class="mt-4 inline-block bg-background text-background-inverse px-6 py-3 rounded-lg shadow hover:bg-background-hover transition-colors">Discover More</a>
+        </div>
+        <div class="model-3d">
+            <!-- Placeholder for actual 3D model -->
+            <!-- Implement 3D model with Three.js or another library here -->
         </div>
     </div>
 
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-ivory">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center my-8">About The Web Weaver</h2>
+            <div class="leading-loose text-justify mx-auto max-w-4xl">
+                <p>In the realm of web development, where the crafting of digital worlds coalesces with the heritage of ancient lore, I stand as Hyllus, weaver of the Web Arcane. My pursuit of honing the craft bridges the chasm between the ethereal and the tangible, as I forge experiences that resonate with timelessness and innovation.</p>
+                <p>With a firm grasp on the helm of creativity, my odyssey through the myriad corridors of the internet has been shaped not just by the skills I’ve honed, but by the narratives I’ve knitted—the sites and applications I’ve brought to life stand as monuments to ingenuity and ambition realized.</p>
+                <p>Invoking the wisdom of digital muses, I channel visions into existence, granting them form within the boundless matrix. As a craftsman in the electronic atelier, each blueprint becomes a passage; each interface, a palimpsest; and every user journey, an epic etched in the annals of the virtual continents.</p>
+                <p>The tapestry of my portfolio is an open scroll—inviting those who seek to partake in the alchemy of creation. I am the conduit for your digital aspirations; together, let us unveil the sagas and chronicles yet unwritten. I am Hyllus, the web's whisperer, and this is but the prelude to our shared legend.</p>
+            </div>
+        </div>
+    </section>
     <!-- Contact Section -->
     <section id="contact">
         <div class="py-20 bg-gray-100">
