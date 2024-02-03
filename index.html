@@ -3,61 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyllus – Mythical Portfolio</title>
+    <title>Hyllus – Web Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-serif bg-gray-100">
 
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-10 top-0">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-gray-800">Hyllus</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-4">
+                <a href="#home" class="text-gray-600 hover:text-gray-900">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-gray-900">About</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-gray-900">Portfolio</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button type="button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900" aria-label="toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+                    <path fill-rule="evenodd" d="M4 5h16v2H4V5zm0 7h16v2H4v-2zm0 7h16v2H4v-2z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <a href="#home" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Home</a>
+            <a href="#about" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">About</a>
+            <a href="#portfolio" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Portfolio</a>
+            <a href="#contact" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">Contact</a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <div class="relative bg-black text-white">
-        <img src="path_to_your_hero_background.jpg" class="absolute inset-0 w-full h-full object-cover opacity-70" alt="mythical background">
-        <div class="relative container mx-auto px-4 py-20 md:py-32 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold uppercase">Hyllus</h1>
-            <p class="mt-4 text-lg md:text-xl">Weaving Legends Through Design</p>
+    <div class="bg-gray-900 text-white pt-20 pb-64 mt-0 md:mt-0" id="home">
+        <div class="container mx-auto text-center px-6">
+            <h1 class="text-6xl font-bold mt-0 mb-6">Embark on a Mythical Journey</h1>
+            <h3 class="text-2xl mb-8">Discover the Legendary Work of a Web Artisan</h3>
         </div>
     </div>
 
     <!-- About Section -->
-    <div class="container mx-auto px-4 py-20">
-        <h2 class="text-3xl font-bold text-center">The Sage's Tale</h2>
-        <div class="mt-8 text-gray-800 leading-relaxed">
-            <p>Your epic journey narrative...</p>
-            <!-- More about content -->
-        </div>
-    </div>
-
-    <!-- Portfolio Section -->
-    <div class="bg-gray-200 py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center">Tales of Triumph</h2>
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Portfolio items -->
-                <div class="bg-white p-4 shadow-lg">
-                    <img src="path_to_project_image.jpg" alt="Project Image" class="w-full h-48 object-cover">
-                    <h3 class="text-xl font-semibold mt-2">Project Name</h3>
-                    <p class="mt-1">Brief project description...</p>
-                </div>
-                <!-- Repeat for other projects -->
+    <section class="bg-gray-100 py-20" id="about">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-semibold text-gray-800">The Tale of Hyllus</h2>
+                <p class="mt-4 text-gray-600">
+                    In the realm of web craftsmanship, I am known as Hyllus. Steeped in the ancient art of code alchemy, I create digital experiences that are both magical and transformative. Such tales are not mere stories, but abiding chronicles of my journey as a digital bard...
+                </p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-20 bg-white" id="portfolio">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-semibold text-center text-gray-800">Chronicles of Creation</h2>
+            <div class="flex flex-wrap -m-4 mt-6">
+                <!-- Portfolio Item -->
+                <div class="p-4 lg:w-1/3 md:w-1/2 w-full">
+                    <div class="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                        <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Project Name</h1>
+                        <p class="leading-relaxed mb-3">A short description detailing the legend behind the project...</p>
+                        <a class="text-indigo-500 inline-flex items-center" href="#">Learn More
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- More portfolio items... -->
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
-    <div class="container mx-auto px-4 py-20 text-center">
-        <h2 class="text-3xl font-bold">Oracle’s Chamber</h2>
-        <p class="mt-4 text-gray-800">Seek prophecies or embark on new quests by contacting me</p>
-        <form class="mt-8">
-            <!-- Contact form fields -->
-            <input type="text" placeholder="Name" class="mt-2 p-2 w-full max-w-md">
-            <input type="email" placeholder="Email" class="mt-2 p-2 w-full max-w-md">
-            <textarea placeholder="Message" class="mt-2 p-2 w-full max-w-md"></textarea>
-            <button type="submit" class="mt-4 px-8 py-2 bg-black text-white rounded shadow">Send Message</button>
-        </form>
-    </div>
+    <section class="bg-gray-100 py-20" id="contact">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-semibold text-center text-gray-800">Converse with The Creator</h2>
+            <div class="flex justify-center mt-6">
+                <div class="w-full max-w-2xl px-6 py-4 bg-white rounded-md">
+                    <h3 class="text-2xl font-semibold text-center text-gray-800">Send a Parchment</h3>
+                    <form action="#" method="POST" class="space-y-6">
+                        <input class="w-full bg-gray-200 px-4 py-2 rounded-md border-2 border-gray-200 focus:border-indigo-600" type="text" name="name" placeholder="Your Name">
+                        <input class="w-full bg-gray-200 px-4 py-2 rounded-md border-2 border-gray-200 focus:border-indigo-600" type="email" name="email" placeholder="Your Email">
+                        <textarea class="w-full bg-gray-200 px-4 py-2 rounded-md border-2 border-gray-200 focus:border-indigo-600" rows="5" name="message" placeholder="Your Message"></textarea>
+                        <button class="px-6 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-900" type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center py-4">
-        <p>© 2023 Hyllus - All rights reserved.</p>
+    <footer class="bg-gray-800 text-white text-center py-8">
+        <p>© Hyllus 2023. All rights reserved.</p>
     </footer>
 
 </body>
