@@ -7,14 +7,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.js"></script>
     <style>
         body {
             font-family: 'Cinzel', serif;
             background-color: #fffaf0; /* Ivory background */
         }
-        h1, h2, h3, p { color: #3d3d3d; } /* Dark text for contrast */
+        h1, h2, h3, p {
+            color: #3d3d3d; /* Dark text for contrast */
+        }
         
-        /* Custom styles for the heroic mythical theme */
         .heroic-text {
             font-size: 2rem;
             line-height: 3rem;
@@ -34,53 +36,34 @@
 
         .model-3d {
             flex-basis: 50%;
-            /* Temporary styles for demonstration */
             width: 100%;
             height: 400px;
-            background: #ddd url('path_to_placeholder_image_for_3d_model.png') no-repeat center center;
-            background-size: contain;
         }
     </style>
-
 </head>
 <body class="scroll-smooth">
 
     <!-- Fixed Navbar -->
     <nav class="fixed w-full top-0 z-30 bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-3 md:space-x-10">
-                <div class="flex justify-start lg:w-0 lg:flex-1">
-                    <a href="#" class="text-xl font-semibold text-gray-700 hover:text-gray-900">
-                        Hyllus.net
-                    </a>
-                </div>
-                <!-- Primary navigation -->
-                <div class="hidden md:flex space-x-10">
-                    <a href="#home" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
-                    <a href="#about" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
-                    <a href="#portfolio" class="text-base font-medium text-gray-500 hover:text-gray-900">Portfolio</a>
-                    <a href="#blog" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
-                    <a href="#contact" class="text-base font-medium text-gray-500 hover:text-gray-900">Contact</a>
-                </div>
-            </div>
-        </div>
+        <!-- Navbar content -->
     </nav>
 
     <!-- Spacer to prevent content from hiding under the fixed navbar -->
     <div class="pt-16"></div>
 
+    <!-- Hero Section -->
     <div class="hero-section">
+        <!-- Hero text content -->
         <div class="hero-text">
             <h1 class="text-5xl font-bold leading-tight">Embark on a Digital Odyssey</h1>
             <p class="heroic-text my-2">
-                Journey through the artistry of modern web craft, where each line of code is woven into the very fabric of the internet — crafting worlds, telling stories, building legacies.
+                Journey through the artistry of modern web craft...
             </p>
-            <!-- This button is optional -->
-            <a href="#about" class="mt-4 inline-block bg-background text-background-inverse px-6 py-3 rounded-lg shadow hover:bg-background-hover transition-colors">Discover More</a>
+            <a href="#about" class="my-button">Discover More</a>
         </div>
-        <div class="model-3d" id="model-container">
-
-        </div>
+        
+        <!-- Model container -->
+        <div class="model-3d" id="model-container"></div>
     </div>
 
     <!-- About Section -->
@@ -216,65 +199,63 @@
 </footer>
 
 
-<script>
-    // Variables for setup
-    let container;
-    let camera;
-    let renderer;
-    let scene;
-    let model;
+    <!-- Three.js Script -->
+    <script>
+        // Ensure the DOM is fully loaded before executing Three.js code
+        document.addEventListener('DOMContentLoaded', function() {
+            let container;
+            let camera;
+            let renderer;
+            let scene;
+            let model;
 
-    function init() {
-        container = document.querySelector('#model-container');
+            function init() {
+                container = document.querySelector('#model-container');
+                scene = new THREE.Scene();
 
-        // Create scene
-        scene = new THREE.Scene();
+                const fov = 35;
+                const aspect = container.clientWidth / container.clientHeight;
+                const near = 0.1;
+                const far = 1000;
 
-        // Camera setup
-        const fov = 35; // Field of view
-        const aspect = container.clientWidth / container.clientHeight;
-        const near = 0.1;
-        const far = 1000;
+                camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+                camera.position.set(0, 0, 10);
 
-        camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        camera.position.set(0, 0, 10);
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                container.appendChild(renderer.domElement);
 
-        // Renderer setup
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+                const loader = new THREE.GLTFLoader();
+                loader.load('pjanic.gltf', function(gltf) {
+                    model = gltf.scene;
+                    model.scale.set(1, 1, 1); // Scale the model to appropriate size
+                    scene.add(model);
+                    animate();
+                });
 
-        container.appendChild(renderer.domElement);
+                const ambientLight = new THREE.AmbientLight(0x404040, 2.5);
+                scene.add(ambientLight);
+            }
 
-        // Load model using GLTFLoader or any other loader you need
-        const loader = new THREE.GLTFLoader();
-        loader.load('pjanic.gltf', function (gltf) {
-            model = gltf.scene;
-            scene.add(model);
-            animate(); // Call animate function after the model is loaded
+            function animate() {
+                requestAnimationFrame(animate);
+                if (model) {
+                    model.rotation.y += 0.005;
+                }
+                renderer.render(scene, camera);
+            }
+
+            function onWindowResize() {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            }
+
+            window.addEventListener('resize', onWindowResize, false);
+
+            init();
         });
-
-        // Add lights
-        const ambientLight = new THREE.AmbientLight(0x404040, 3);
-        scene.add(ambientLight);
-    }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        // Add rotation if needed
-        // model.rotation.y += 0.005;
-        renderer.render(scene, camera);
-    }
-
-    // Handle window resize
-    window.addEventListener('resize', function () {
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-    });
-
-    // Call the init function to set up the scene
-    init();
-</script>
+    </script>
 </body>
 </html>
